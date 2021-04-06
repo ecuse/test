@@ -2,7 +2,7 @@
 
 //Определяет операционную систему
 const isMobile = {
-	Android: function (){
+	Android: function () {
 		return navigator.userAgent.match(/Android/i);
 	},
 	BlackBerry: function () {
@@ -18,7 +18,7 @@ const isMobile = {
 		return navigator.userAgent.match(/IEMobile/i);
 	},
 	any: function () {
-		return(
+		return (
 			isMobile.Android() ||
 			isMobile.BlackBerry() ||
 			isMobile.iOS() ||
@@ -27,14 +27,14 @@ const isMobile = {
 	}
 };
 
-if(isMobile.any()) {
+if (isMobile.any()) {
 	document.body.classList.add('_touch');
 
-	let menuArrows = document.querySelectorAll ('.menu__arrow');
-	if (menuArrows.length>0){
-		for ( let index = 0; index < menuArrows.length; index++){
+	let menuArrows = document.querySelectorAll('.menu__arrow');
+	if (menuArrows.length > 0) {
+		for (let index = 0; index < menuArrows.length; index++) {
 			const menuArrow = menuArrows[index];
-			menuArrow.addEventListener("click", function(e) {
+			menuArrow.addEventListener("click", function (e) {
 				menuArrow.parentElement.classList.toggle('_active');
 			});
 		}
@@ -42,66 +42,67 @@ if(isMobile.any()) {
 
 
 
-}else{
+} else {
 	document.body.classList.add('_pc');
 }
 
 
 //меню бургер
-const iconMenu= document.querySelector('.menu__icon');
+const iconMenu = document.querySelector('.menu__icon');
 const menuBody = document.querySelector('.menu__body');
-if(iconMenu){
-	iconMenu.addEventListener("click", function(e){
+if (iconMenu) {
+	iconMenu.addEventListener("click", function (e) {
 		document.body.classList.toggle('_lock');
 		iconMenu.classList.toggle('_active');
 		menuBody.classList.toggle('_active');
 	});
 }
 //Прокрутка при клике
-const menuLinks =document.querySelectorAll('.menu__link[data-goto]');
-if(menuLinks.length>0) {
+const menuLinks = document.querySelectorAll('.menu__link[data-goto]');
+if (menuLinks.length > 0) {
 	menuLinks.forEach(menuLink => {
 		menuLink.addEventListener("click", onMenuLinkClick);
 	});
 
-	function onMenuLinkClick(e){
-		const menuLink= e.target;
-		if(menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)){
+	function onMenuLinkClick(e) {
+		const menuLink = e.target;
+		if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
 			const gotoBlock = document.querySelector(menuLink.dataset.goto);
-			const gotoBlockValue = gotoBlock.getBoundingClientRect().top + pageYOffset-document.querySelector('header').offsetHeight;
+			const gotoBlockValue = gotoBlock.getBoundingClientRect().top + pageYOffset - document.querySelector('header').offsetHeight;
 
-			if(iconMenu.classList.contains('_active')){//Убирает меню при нажатии на контент
-		document.body.classList.remove('_lock');//Убирает меню при нажатии на контент
-		iconMenu.classList.remove('_active');//Убирает меню при нажатии на контент
-		menuBody.classList.remove('_active');//Убирает меню при нажатии на контент
+			if (iconMenu.classList.contains('_active')) {//Убирает меню при нажатии на контент
+				document.body.classList.remove('_lock');//Убирает меню при нажатии на контент
+				iconMenu.classList.remove('_active');//Убирает меню при нажатии на контент
+				menuBody.classList.remove('_active');//Убирает меню при нажатии на контент
 			}
 
 			window.scrollTo({
-				top:gotoBlockValue,
+				top: gotoBlockValue,
 				behavior: "smooth"
 			});
 			e.preventDefault();
 		}
 	}
 }
-new Swiper ('.image-slider',{
+new Swiper('.image-slider', {
 	//стрелки
-	navigation :{
+	navigation: {
 		nextEl: '.swiper-button-next',
 		prevEl: '.swiper-button-prev'
 	},
 	//точки под фотками
-	pagination:{
+	pagination: {
 		el: '.swiper-pagination',
 		//булеты
-		clickable:true,
+		clickable: true,
 		//динамические булеты
-		dynamicBullets:true,
+		dynamicBullets: true,
 		//Цифры внутри кружков
-/*		renderBullet: function (index, className){
-			return '<span class="' + className + '">' + (index + 1) + '</span>';
-		},*/
+		/*		renderBullet: function (index, className){
+					return '<span class="' + className + '">' + (index + 1) + '</span>';
+				},*/
 		//Прогресс бар
 		//type: 'progressbar'
 	},
 });
+//проверка
