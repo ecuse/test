@@ -105,4 +105,4 @@ new Swiper('.image-slider', {
 		//type: 'progressbar'
 	},
 });
-//проверк
+

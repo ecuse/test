@@ -79,15 +79,14 @@ background-color: #7a956b;
 
 
 }
-.header_menu
-.menu
-.menu__icon
-.menu__body
-.menu__list
+.header_menu{}
+.menu{}
+.menu__icon{}
+.menu__body{}
+.menu__list{}
 .menu__list >li{
 position:relative;
-margin:0px 0px 0px 20px;
-
+margin: 0px 0px 0px 20px;
 }
 	
 
@@ -200,10 +199,10 @@ body._touch .menu__list >li._active .menu__arrow{
 		align-items: center;
 	}
 	.menu__list >li{
-		padding: 10px 0;
+		padding: 10px 0px ;
 	}
 	.menu__sub-list{
-		transform: translate(0px 10%);
+		transform: translate(0px, 10%);
 		opacity: 0;
 		visibility: hidden;
 		pointer-events: none;
